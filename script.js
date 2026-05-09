@@ -28,8 +28,7 @@ const secoes = [
       
       ["VALOR_INTERNO", 3000, false]
     ]
-  }
-    ]
+ },
 
   {
     titulo: "Cirúrgicos / Dermatológicos",
