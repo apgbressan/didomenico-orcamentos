@@ -237,10 +237,19 @@ details {
 }
 
 /* COLUNAS DOS ITENS */
+details .linha-item {
+  width: 100%;
+}
+
 details[open] {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px 25px;
+  display: block;
+}
+
+details[open] .linha-item {
+  display: inline-grid;
+  width: 48%;
+  margin-right: 2%;
+  vertical-align: top;
 }
 
 /* summary ocupa linha inteira */
