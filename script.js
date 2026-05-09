@@ -102,7 +102,6 @@ details.appendChild(linha);
   container.appendChild(details);
 
 });
-});
 
 function atualizarSelecionados() {
 
