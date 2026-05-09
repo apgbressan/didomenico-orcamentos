@@ -20,12 +20,12 @@ const secoes = [
   },
 
   {
-    titulo: "Cirúrgicos / Dermatológicos",
+    titulo: "Tratamento de injetáveis",
     itens: [
-      ["Hialuronidase", 1800],
-      ["Exérese de Lesão de Pele", 1900],
-      ["Curetagem", 1500],
-      ["Subcisão", 3300],
+      ["Complexo B com B12", 130],
+      ["Vitamina D 300 mil UI", 200],
+      ["Vitamina D 600 mil UI", 280],
+      ["Soro para reposição de vitaminas", 900],
     ]
   }
 ];
