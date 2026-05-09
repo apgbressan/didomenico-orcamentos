@@ -78,9 +78,7 @@ input[type="checkbox"] {
 ========================= */
 
 .linha-item {
-  display: inline-grid;
-
-  grid-template-columns: 25px 60px 1fr;
+  display: inline-flex;
 
   align-items: center;
   gap: 8px;
