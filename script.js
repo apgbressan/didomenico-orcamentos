@@ -47,36 +47,56 @@ secoes.forEach(secao => {
 
   secao.itens.forEach(item => {
 
-    const label = document.createElement("label");
+    const linha = document.createElement("div");
 
-    const checkbox = document.createElement("input");
+const checkbox = document.createElement("input");
 
-    checkbox.type = "checkbox";
-    checkbox.dataset.nome = item[0];
-    checkbox.dataset.valor = item[1];
+checkbox.type = "checkbox";
 
-    checkbox.addEventListener("change", () => {
+checkbox.dataset.nome = item[0];
+checkbox.dataset.valor = item[1];
 
-      const marcados =
-        details.querySelectorAll("input:checked").length;
+const quantidade = document.createElement("select");
 
-      details.open = marcados > 0;
+[1, 2, 3].forEach(num => {
 
-      atualizarSelecionados();
+  const option = document.createElement("option");
 
-    });
+  option.value = num;
+  option.textContent = num + "x";
 
-    label.appendChild(checkbox);
+  quantidade.appendChild(option);
 
-    label.append(
-      ` ${item[0]} — R$ ${item[1].toLocaleString("pt-BR")}`
-    );
+});
 
-    details.appendChild(label);
+checkbox.addEventListener("change", () => {
 
-  });
+  const marcados =
+    details.querySelectorAll("input:checked").length;
 
-  container.appendChild(details);
+  details.open = marcados > 0;
+
+  atualizarSelecionados();
+
+});
+
+quantidade.addEventListener(
+  "change",
+  atualizarSelecionados
+);
+
+const texto = document.createElement("span");
+
+texto.textContent =
+  ` ${item[0]} — R$ ${item[1].toLocaleString("pt-BR")}`;
+
+linha.appendChild(checkbox);
+
+linha.appendChild(quantidade);
+
+linha.appendChild(texto);
+
+details.appendChild(linha);
 
 });
 
@@ -88,10 +108,16 @@ function atualizarSelecionados() {
     .querySelectorAll("#procedimentos input:checked")
     .forEach(i => {
 
-      selecionados.push({
-        nome: i.dataset.nome,
-        valor: Number(i.dataset.valor)
-      });
+const qtd =
+  Number(
+    i.parentElement.querySelector("select").value
+  );
+
+selecionados.push({
+  nome: i.dataset.nome,
+  valor: Number(i.dataset.valor),
+  quantidade: qtd
+});
 
     });
 
@@ -107,12 +133,12 @@ function renderResumo() {
 
   selecionados.forEach(item => {
 
-    total += item.valor;
-
+total += item.valor * item.quantidade;
+    
     const linha = document.createElement("div");
 
     linha.textContent =
-      `${item.nome} — ${item.valor.toLocaleString("pt-BR", {
+      `${item.quantidade}x ${item.nome} — ${(item.valor * item.quantidade).toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
       })}`;
