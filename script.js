@@ -47,8 +47,8 @@ secoes.forEach(secao => {
 
   secao.itens.forEach(item => {
 
-    const linha = document.createElement("div");
-
+const linha = document.createElement("div");
+linha.classList.add("linha-item");
 const checkbox = document.createElement("input");
 
 checkbox.type = "checkbox";
